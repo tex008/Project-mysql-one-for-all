@@ -5,7 +5,6 @@ CREATE DATABASE SpotifyClone;
 CREATE TABLE SpotifyClone.planos(
     plano_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     plano VARCHAR(18) NOT NULL,
-    data_assinatura DATE NOT NULL,
     valor_plano DECIMAL(3,2) NOT NULL
 ) engine = InnoDB;
 
@@ -14,6 +13,7 @@ CREATE TABLE SpotifyClone.usuarios(
     usuario VARCHAR(50) NOT NULL,
     idade INT NOT NULL,
     plano_id INT NOT NULL,
+	data_assinatura DATE NOT NULL,
     FOREIGN KEY (plano_id) REFERENCES planos(plano_id)
 ) engine = InnoDB;
 
@@ -59,25 +59,25 @@ CREATE TABLE SpotifyClone.historico_reproducoes(
 
 
 
-INSERT INTO SpotifyClone.planos (plano, data_assinatura, valor_plano)
+INSERT INTO SpotifyClone.planos (plano, valor_plano)
 VALUES
-  ('gratuito', '2019-10-20', 0.00),
-  ('familiar', '2017-12-30', 7.99),
-  ('universitário', '2019-06-05', 5.99),
-  ('pessoal', '2020-05-13', 6.99);
+  ('gratuito', 0.00),
+  ('familiar', 7.99),
+  ('universitário', 5.99),
+  ('pessoal', 6.99);
 
-INSERT INTO SpotifyClone.usuarios (usuario, idade, plano_id)
+INSERT INTO SpotifyClone.usuarios (usuario, idade, plano_id, data_assinatura)
 VALUES
-  ('Thati', 23, 1),
-  ('Cintia', 35, 2),
-  ('Bill', 20, 3),
-  ('Roger', 45, 4),
-  ('Norman', 58, 4),
-  ('Patrick', 33, 2),
-  ('Vivian', 26, 3),
-  ('Carol', 19, 3),
-  ('Angelina', 42, 2),
-  ('Paul', 46, 2);
+  ('Thati', 23, 1, '2019-10-20'),
+  ('Cintia', 35, 2, '2017-12-30'),
+  ('Bill', 20, 3, '2019-06-05'),
+  ('Roger', 45, 4, '2020-05-13'),
+  ('Norman', 58, 4, '2017-02-17'),
+  ('Patrick', 33, 2, '2017-01-06'),
+  ('Vivian', 26, 3, '2018-01-05'),
+  ('Carol', 19, 3, '2018-02-14'),
+  ('Angelina', 42, 2, '2018-04-29'),
+  ('Paul', 46, 2, '2017-01-17');
   
 INSERT INTO SpotifyClone.artistas (nome)
 VALUES
